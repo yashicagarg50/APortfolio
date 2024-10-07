@@ -1,47 +1,25 @@
 <?php
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $name = htmlspecialchars(trim($_POST['name']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $subject = htmlspecialchars(trim($_POST['subject']));
+    $message = htmlspecialchars(trim($_POST['message']));
 
-    // Get form fields and remove whitespace
-    $name = trim($_POST["name"]);
-    $email = trim($_POST["email"]);
-    $subject = trim($_POST["subject"]);
-    $message = trim($_POST["message"]);
+    // Validate fields
+    if (!empty($name) && !empty($email) && !empty($subject) && !empty($message)) {
+        $to = "your-email@example.com"; // Replace with your email
+        $headers = "From: " . $email;
+        $body = "Name: $name\nEmail: $email\nMessage:\n$message";
 
-    // Validate email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        // Invalid email format
-        echo "Invalid email format";
-        exit;
-    }
-
-    // Validate other fields
-    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
-        // Missing fields
-        echo "Please fill in all the fields";
-        exit;
-    }
-
-    $to = "anushkahrms@gmail.com";
-
-    // Set the email subject
-    $emailSubject = "Contact Form Submission: $subject";
-
-    // Build the email content
-    $emailBody = "Name: $name\n";
-    $emailBody .= "Email: $email\n\n";
-    $emailBody .= "Message:\n$message\n";
-
-    // Set email headers
-    $headers = "From: $email";
-
-    // Send the email
-    if (mail($to, $emailSubject, $emailBody, $headers)) {
-        // Success message
-        echo "Your message has been sent!";
+        // Send email
+        if (mail($to, $subject, $body, $headers)) {
+            echo "Your message has been sent.";
+        } else {
+            echo "Failed to send the message.";
+        }
     } else {
-        // Failure message
-        echo "Sorry, something went wrong. Please try again later.";
+        echo "All fields are required.";
     }
 }
 ?>

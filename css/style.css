@@ -639,18 +639,7 @@ mark,
   padding: 12px 15px;
 }
 
-.contact-section .php-email-form button[type=submit] {
-  background: #18d26e;
-  border: 0;
-  padding: 10px 30px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
-}
 
-.contact-section .php-email-form button[type=submit]:hover {
-  background: #15bb62;
-}
 
 @keyframes animate-loading {
   0% {
