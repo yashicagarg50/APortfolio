@@ -813,53 +813,36 @@ h1, h2, h3, h4, h5,
 
 
 //FTCO ABOUT
-.ftco-about{
-	.img-about{
-		width: 100%;
-		z-index: 0;
-		position: relative;
-		.img{
-			display: block;
-			width: 100%;
-			position: relative;
-			z-index: 1;
+.ftco-about {
+	ul.about-info {
+	  display: inline-block;
+	  padding: 0;
+	  margin: 0;
+	  width: 100%; // Ensure the ul takes full width
+  
+	  li {
+		list-style: none;
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: space-between; // Space between label and value
+  
+		span {
+		  &:first-child {
+			font-weight: 600;
+			color: #fff;
+			margin-right: 10px; // Adds space between label and value
+			flex-shrink: 0; // Prevents shrinking of the first span
+		  }
+  
+		  &:last-child {
+			flex-grow: 1; // Ensures the second span takes the remaining space
+			word-break: break-word; // Breaks long words if necessary
+		  }
 		}
+	  }
 	}
-	ul.about-info{
-		display: inline-block;
-		padding: 0;
-		margin: 0;
-		width: 100%;
-		li{
-			list-style: none;
-			margin-bottom: 10px;
-			span{
-				width: calc(100% - 130px);
-				&:first-child{
-					font-weight: 600;
-					color: $white;
-					width: 130px;
-				}
-			}
-		}
-	}
-	.counter-wrap{
-		.text{
-			p{
-				font-size: 20px;
-				span{
-					font-weight: 400;
-					color: $white;
-				}
-				span.number{
-					font-weight: 600;
-					color: $primary;
-				}
-			}
-		}
-	}
-}
-
+  }
+  
 
 .resume-wrap{
 	width: 100%;
